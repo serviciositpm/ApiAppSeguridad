@@ -39,7 +39,7 @@ node-ts-auth/
 ## 🚀 Instalación y Ejecución
 ```bash
 # Clonar el repositorio
-git clone [https://github.com/serviciositpm/ApiAppSeguridad.git](https://github.com/serviciositpm/ApiAppSeguridad.git)
+git clone (https://github.com/serviciositpm/ApiAppSeguridad.git) 
 cd node-ts-auth
 
 # Instalar dependencias
