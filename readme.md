@@ -9,16 +9,18 @@
 node-ts-auth/
 │── src/
 │   ├── config/
-│   │   ├── db.ts
+│   │   ├── dbConfig.ts
 │   ├── middleware/
 │   │   ├── validationMiddleware.ts
+│   │── enums
+│   │   ├── codeHttpsEnums.ts
 │   ├── modules/
 │   │   ├── auth/
-│   │   │   ├── auth.controller.ts
-│   │   │   ├── auth.repository.ts
-│   │   │   ├── auth.routes.ts
-│   │   │   ├── auth.services.ts
-│   │   │   ├── auth.validations.ts
+│   │   │   ├── controller.ts
+│   │   │   ├── repository.ts
+│   │   │   ├── routes.ts
+│   │   │   ├── services.ts
+│   │   │   ├── validations.ts
 │   ├── index.ts
 │── .env
 │── package.json
@@ -32,12 +34,12 @@ node-ts-auth/
 - **TypeScript**
 - **JWT para autenticación**
 - **SQL Server**
-- **express-validator para validaciones**
+- **express-validations para validaciones**
 
 ## 🚀 Instalación y Ejecución
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tuusuario/node-ts-auth.git
+git clone [https://github.com/serviciositpm/ApiAppSeguridad.git](https://github.com/serviciositpm/ApiAppSeguridad.git)
 cd node-ts-auth
 
 # Instalar dependencias
