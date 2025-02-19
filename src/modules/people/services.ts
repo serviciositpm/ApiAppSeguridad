@@ -9,9 +9,9 @@ export class PeopleServices {
     constructor() {
         this.peopleRepository = new PeopleRepository();
     }
-    async getDataPeople() {
+    async getDataPeople(spname: string) {
         try {
-            const dataPeople = await this.peopleRepository.getDataPeople();
+            const dataPeople = await this.peopleRepository.getDataPeople(spname);
             return HttpResponse.response(
                 CodesHttpEnum.ok,
                 dataPeople,
