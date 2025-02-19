@@ -6,6 +6,9 @@ import config from './config/dbConfig';
 // ? Rutas del proyecto
 import authRoutes from "./modules/auth/routes";
 import peopleRoutes from "./modules/people/routes";
+import docsRoutes from "./modules/docs/routes";
+
+
 import { ValidationError } from "express-validation";
 import { PORT } from "./environments/env";
 
@@ -28,6 +31,8 @@ const prefix: string = "/api-securityapp-v1";
 // ? Deficion de rutas por modulos
 app.use(`${prefix}/auth`, authRoutes) 
 app.use(`${prefix}/people`, peopleRoutes) 
+app.use(`${prefix}/docs`, docsRoutes) 
+
 app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
     if (err instanceof ValidationError) {
       return res.status(err.statusCode).json(err)
