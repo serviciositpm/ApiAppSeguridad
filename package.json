@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/express-validator": "^2.20.33",
+    "activedirectory2": "^2.2.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -18,7 +19,11 @@
     "express-validation": "^4.1.1",
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
-    "mssql": "^11.0.1"
+    "ldapts": "^7.3.1",
+    "mongoose": "^8.10.1",
+    "mssql": "^11.0.1",
+    "winston": "^3.17.0",
+    "winston-mongodb": "^6.0.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",

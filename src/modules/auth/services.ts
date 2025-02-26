@@ -32,6 +32,7 @@ export class AuthServices {
         "Usuario Validado"
       );
     } catch (error) {
+      console.error("Error en Consulta de el services de Auth:", error); // Registrar el error en la consola
       throw error;
     }
   }

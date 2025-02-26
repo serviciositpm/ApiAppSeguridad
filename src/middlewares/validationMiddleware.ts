@@ -5,6 +5,7 @@ import { HttpResponse } from '../utils/httpResponse';
 import { PUBLIC_KEY } from '../environments/env';
 import { CodesHttpEnum } from '../enums/codesHttpsEnums';
 
+
 export const validatioToken = (req: Request,res:Response,nxt: NextFunction) =>{
     try {
         const token = req.headers.authorization;
@@ -16,7 +17,6 @@ export const validatioToken = (req: Request,res:Response,nxt: NextFunction) =>{
         }
         let tokenModificado = token.split(' ')[1];
         let decoded = jwt.verify(tokenModificado, PUBLIC_KEY);
-        console.log(decoded) // bar
         nxt();
 
     } catch (error) {
