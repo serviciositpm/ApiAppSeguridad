@@ -1,4 +1,5 @@
 import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
+import { IPeople } from "../../interfaces/People.interface";
 import { HttpResponse } from "../../utils/httpResponse";
 import { PeopleRepository } from "./repository";
 
@@ -13,6 +14,26 @@ export class PeopleServices {
       return HttpResponse.response(CodesHttpEnum.ok, dataPeople, "Data People");
     } catch (error) {
       console.error("Error en Consulta de el services de People:", error); // Registrar el error en la consola
+      throw error;
+    }
+  }
+
+  async getDataEmployees(jsondata: string, storeprocedure: string) {
+    try {
+      const dataEmployees = await this.peopleRepository.getDataEmployees(
+        jsondata,
+        storeprocedure
+      );
+      return HttpResponse.response(
+        CodesHttpEnum.ok,
+        dataEmployees,
+        "Data Employees"
+      );
+    } catch (error) {
+      console.error(
+        "Error en Consulta de Url en el Services de Peoples:",
+        error
+      ); // Registrar el error en la consola
       throw error;
     }
   }

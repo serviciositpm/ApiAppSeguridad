@@ -1,17 +1,20 @@
 import { Request, Response, Router } from "express";
-import { getDataPeopleController, getDataPeopleControllerSecurity } from "./controller";
+import { getDataEmployeesController, getDataPeopleControllerSecurity } from "./controller";
+import { validate } from "express-validation";
 import { validatioToken } from "../../middlewares/validationMiddleware";
 import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
 import { HttpResponse } from "../../utils/httpResponse";
+import { PeopleValidation } from "./validations";
 
 const routes = Router();
 
 routes.get(
     "/getdatapeople", 
     validatioToken as any,
+    validate(PeopleValidation,{},{}) as any ,
     async (req: Request, res: Response) => {
         try {
-          const response = await getDataPeopleController(req);
+          const response = await getDataEmployeesController(req);
           res.status(response.code).json(response);
         } catch (error) {
           HttpResponse.fail(
