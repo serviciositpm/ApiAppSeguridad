@@ -8,7 +8,7 @@ import { PeopleValidation } from "./validations";
 
 const routes = Router();
 
-routes.get(
+routes.post(
     "/getdatapeople", 
     validatioToken as any,
     validate(PeopleValidation,{},{}) as any ,
@@ -26,7 +26,7 @@ routes.get(
         }
       }
 );
-routes.get(
+routes.post(
   "/getdatapeoplesecurity", 
   validatioToken as any,
   async (req: Request, res: Response) => {

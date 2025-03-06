@@ -8,7 +8,7 @@ import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
 
 const routes = Router();
 
-routes.get(
+routes.post(
     "/geturldocs", 
     validatioToken as any,
     async (req: Request, res: Response) => {
