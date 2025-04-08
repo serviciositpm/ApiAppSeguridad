@@ -1,6 +1,6 @@
 import sql from "mssql";
 import dbConfig from "../../config/dbConfig";
-import { IPeople } from "../../interfaces/People.interface";
+
 
 export class PeopleRepository {
   async getDataPeople(spname: string): Promise<any> {
@@ -27,6 +27,19 @@ export class PeopleRepository {
         "Error en Consulta de Url en el Repository de Peoples:",
         error
       ); // Registrar el error en la consola
+      throw error;
+    }
+  }
+  async getDataSupplier(cedruc: string, spname: string): Promise<any> {
+    try {
+      const pool = await sql.connect(dbConfig);
+      const result = await pool
+        .request()
+        .input("cedruc", sql.Char, cedruc)
+        .execute(spname);
+      return result.recordset;
+    } catch (error) {
+      console.error("Error Obteniendo datos del proveedor:", error); // Registrar el error en la consola
       throw error;
     }
   }

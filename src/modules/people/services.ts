@@ -17,6 +17,25 @@ export class PeopleServices {
       throw error;
     }
   }
+  async getDataSupplier(cedruc: string, spname: string) {
+    try {
+      const dataSupplier = await this.peopleRepository.getDataSupplier(
+        cedruc,
+        spname
+      );
+      return HttpResponse.response(
+        CodesHttpEnum.ok,
+        dataSupplier,
+        "Data Supplier"
+      );
+    } catch (error) {
+      console.error(
+        "Error en Consulta de el services de People obteneindo Proveedor:",
+        error
+      ); // Registrar el error en la consola
+      throw error;
+    }
+  }
 
   async getDataEmployees(jsondata: string, storeprocedure: string) {
     try {

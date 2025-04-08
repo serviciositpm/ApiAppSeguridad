@@ -14,6 +14,7 @@ import { ValidationError } from "express-validation";
 import { PORT } from "./environments/env";
 import connectMongoDB from "./config/dbConfigMongo";
 import { LogService } from "./modules/logs/services";
+import { CodesHttpEnum } from "./enums/codesHttpsEnums";
 
 
 const app = express();
@@ -65,7 +66,7 @@ app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
     if (err instanceof ValidationError) {
       return res.status(err.statusCode).json(err)
     }
-    return res.status(500).json(err)
+    return res.status(CodesHttpEnum.internalServerError).json(err)
  } as any)
 
 const port: number = Number(PORT);

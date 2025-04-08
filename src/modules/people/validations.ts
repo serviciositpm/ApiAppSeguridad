@@ -8,3 +8,12 @@ export const PeopleValidation = {
     identification: Joi.string().required(),
   }),
 };
+
+export const CedrucQueryValidation = {
+  query: Joi.object({
+    cedruc: Joi.string().required().messages({
+      "any.required": "El parámetro 'cedruc' es obligatorio",
+      "string.base": "El parámetro 'cedruc' debe ser una cadena de texto",
+    }),
+  }),
+};

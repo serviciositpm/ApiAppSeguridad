@@ -30,3 +30,14 @@ export const getDataEmployeesController = async (req: Request) => {
     throw error;
   }
 };
+
+export const getDataSupplierController = async (req: Request) => {
+  try {
+    const cedruc: string = req.query.cedruc as string;
+    const spname: string = "Sp_App_Seguridad_Proveedor";
+    return await new PeopleServices().getDataSupplier(cedruc, spname);
+  } catch (error) {
+    console.error("Error en Consulta de el controller de People obteneindo Proveedor:", error); // Registrar el error en la consola
+    throw error;
+  }
+}
