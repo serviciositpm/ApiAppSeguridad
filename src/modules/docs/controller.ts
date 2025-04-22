@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { IDocs } from "../../interfaces/Docs.interface";
+import { IDocs} from "../../interfaces/Docs.interface";
 import { DocsServices } from "./services";
 
 export const getDocsController = async (req: Request) => {
@@ -9,6 +9,21 @@ export const getDocsController = async (req: Request) => {
   } catch (error) {
     console.error(
       "Error en Consulta de Url en el controller de Documentos:",
+      error
+    ); // Registrar el error en la consola
+    throw error;
+  }
+};
+export const getTideController = async (req: Request) => {
+  try {
+    const anio: number = parseInt(req.query.anio as string, 10);
+    if (isNaN(anio)) {
+      throw new Error("Invalid 'anio' query parameter debe ser numero.");
+    }
+    return await new DocsServices().getTide(anio);
+  } catch (error) {
+    console.error(
+      "Error en Consulta de Url en el controller de Documentos: Obtiene Tide (mareas Aguaje)",
       error
     ); // Registrar el error en la consola
     throw error;

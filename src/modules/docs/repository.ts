@@ -19,4 +19,20 @@ export class DocsRepository {
       throw error;
     }
   }
+  async getTide(anio: number): Promise<any> {
+    try {
+      const pool = await sql.connect(dbConfig);
+      const result = await pool
+        .request()
+        .input("anio", sql.Int, anio)
+        .execute("Sp_App_Seg_Datos_Aguaje");
+      return result.recordset;
+    } catch (error) {
+      console.error(
+        "Error en Consulta de Url en el Repository de Documentos: Obtiene Tide (mareao Aguaje)",
+        error
+      ); // Registrar el error en la consola
+      throw error;
+    }
+  } 
 }

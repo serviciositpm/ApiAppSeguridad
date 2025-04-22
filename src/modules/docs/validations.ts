@@ -11,3 +11,11 @@ export const DoscValidation = {
       .required(),
   }),
 };
+export  const TideValidation = {
+  query: Joi.object({
+    anio: Joi.string().required().messages({
+      "any.required": "El parámetro 'anio' es obligatorio",
+      "number.base": "El parámetro 'anio' debe ser una número",
+    }),
+  }),
+};
