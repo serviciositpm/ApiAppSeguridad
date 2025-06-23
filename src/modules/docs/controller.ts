@@ -29,3 +29,14 @@ export const getTideController = async (req: Request) => {
     throw error;
   }
 };
+export const getContainerController = async (req: Request) => {
+  try {
+    return await new DocsServices().getContainer();
+  } catch (error) {
+    console.error(
+      "Error en Consulta de Url en el controller de Documentos: Obtiene Contenedor",
+      error
+    ); // Registrar el error en la consola
+    throw error;
+  }
+};

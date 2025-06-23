@@ -30,4 +30,16 @@ export class DocsServices {
       throw error;
     }
   }
+  async getContainer() {
+    try {
+      const dataTide = await this.docsRepository.getContainer();
+      return HttpResponse.response(CodesHttpEnum.ok, dataTide, "Data Container ");
+    } catch (error) {
+      console.error(
+        "Error en Consulta de Url en el services de Documentos: Obtiene Contenedor",
+        error
+      ); // Registrar el error en la consola
+      throw error;
+    }
+  }
 }

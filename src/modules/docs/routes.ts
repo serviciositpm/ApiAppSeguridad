@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { validatioToken } from "../../middlewares/validationMiddleware";
-import { getDocsController, getTideController } from "./controller";
+import { getContainerController, getDocsController, getTideController } from "./controller";
 import { HttpResponse } from "../../utils/httpResponse";
 import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
 import { DoscValidation, TideValidation } from "./validations";
@@ -34,6 +34,23 @@ routes.get(
   async (req: Request, res: Response) => {
     try {
       const response = await getTideController(req);
+      res.status(response.code).json(response);
+    } catch (error) {
+      HttpResponse.fail(
+        res,
+        CodesHttpEnum.internalServerError,
+        null,
+        (error as any).toString()
+      );
+    }
+  }
+);
+routes.get(
+  "/getcontainer",
+  validatioToken as any,
+  async (req: Request, res: Response) => {
+    try {
+      const response = await getContainerController(req);
       res.status(response.code).json(response);
     } catch (error) {
       HttpResponse.fail(
