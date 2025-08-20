@@ -1,3 +1,4 @@
+import { accessSync } from "node:fs";
 import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
 import { HttpResponse } from "../../utils/httpResponse";
 
@@ -42,4 +43,14 @@ export class DocsServices {
       throw error;
     }
   }
+  async getDataDocs(opcion: string, nrodoc: string, query: string) {
+    try {
+      const dataDocs = await this.docsRepository.getDataDocs(opcion, nrodoc, query);
+      return HttpResponse.response(CodesHttpEnum.ok, dataDocs, "Data Docs");
+    } catch (error) {
+      console.error("Error en Consulta de Url en el services de Documentos:", error); // Registrar el error en la consola
+      throw error;
+    } 
+  }
+
 }

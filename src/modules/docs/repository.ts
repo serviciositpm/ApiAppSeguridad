@@ -50,4 +50,23 @@ export class DocsRepository {
       throw error;
     }
   } 
+  async getDataDocs(opcion: string, nrodoc: string,query: string): Promise<any> {
+    try {
+      const pool = await sql.connect(dbConfig);
+      const result = await pool
+        .request()
+        .input("opcion", sql.Char, opcion)
+        .input("nrodoc", sql.Char, nrodoc)
+        .execute(query);
+      //return result.recordset[0];
+      /* return result.recordset[0]['JSON_F52E2B61-18A1-11d1-B105-00805F49916B']; */
+      return JSON.parse(result.recordset[0]['JSON_F52E2B61-18A1-11d1-B105-00805F49916B']);
+    } catch (error) {
+      console.error(
+        "Error en Consulta de Url en el Repository de Documentos:",
+        error
+      ); // Registrar el error en la consola
+      throw error;
+    }
+  }
 }

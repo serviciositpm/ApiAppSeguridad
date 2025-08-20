@@ -7,8 +7,11 @@ export const DoscValidation = {
   body: Joi.object<IDocs>({
     opcion: Joi.string().required(),
     nrodoc: Joi.string()
-      .regex(/^\d{3,30}$/)
-      .required(),
+      .regex(/^(?:[A-Za-z]\d+|\d{3,30})$/)
+      .required()
+      .messages({
+        'string.pattern.base': 'El documento debe comenzar con una letra seguida de números o ser solo números (mínimo 3 dígitos)'
+      }),
   }),
 };
 export  const TideValidation = {
