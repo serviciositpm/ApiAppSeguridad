@@ -62,7 +62,7 @@ routes.get(
     }
   }
 );
-routes.get(
+routes.post(
   "/getdatadocs",
   validatioToken as any,
   validate(DoscValidation, {}, {}) as any,
