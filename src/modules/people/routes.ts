@@ -1,10 +1,10 @@
 import { Request, Response, Router } from "express";
-import { getDataEmployeesController, getDataPeopleControllerSecurity, getDataSupplierController } from "./controller";
+import { getDataEmployeesController, getDataParkingController, getDataPeopleControllerSecurity, getDataSupplierController } from "./controller";
 import { validate } from "express-validation";
 import { validatioToken } from "../../middlewares/validationMiddleware";
 import { CodesHttpEnum } from "../../enums/codesHttpsEnums";
 import { HttpResponse } from "../../utils/httpResponse";
-import { PeopleValidation ,CedrucQueryValidation} from "./validations";
+import { PeopleValidation ,CedrucQueryValidation, ParkingQueryValidation} from "./validations";
 
 const routes = Router();
 
@@ -63,6 +63,26 @@ routes.get(
     }
   }
 );
+routes.get(
+  "/getdataparking",
+  validatioToken as any,
+  validate(ParkingQueryValidation, {}, {}) as any,
+  async (req: Request, res: Response) => {
+    try {
+      const response = await getDataParkingController(req);
+      // Simula una respuesta
+      res.status(CodesHttpEnum.ok).json(response);
+    } catch (error) {
+      HttpResponse.fail(
+        res,
+        CodesHttpEnum.internalServerError,
+        null,
+        (error as any).toString()
+      );
+    }
+  }
+);
+
 export default routes;
 
 

@@ -41,3 +41,14 @@ export const getDataSupplierController = async (req: Request) => {
     throw error;
   }
 }
+export const getDataParkingController = async (req: Request) => {
+  try {
+    const divitionCode: string = req.query.divitionCode as string;
+    const spanme: string = 'Sp_App_Seg_Obtener_Parqueos';
+    const centerCode: string = req.query.centerCode as string;    
+    return await new PeopleServices().getDataParking(divitionCode,spanme,centerCode);           
+  } catch (error) {
+    console.error("Error en Consulta de el controller de People obteneindo Proveedor:", error);
+    throw error;
+  }
+};

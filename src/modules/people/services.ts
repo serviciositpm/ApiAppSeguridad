@@ -56,4 +56,18 @@ export class PeopleServices {
       throw error;
     }
   }
+  async getDataParking (divitionCode: string , spanme: string, centerCode	: string) {
+    try {
+      const dataParking = await this.peopleRepository.getDataParking(divitionCode,spanme,centerCode);
+      return HttpResponse.response(
+        CodesHttpEnum.ok,
+        dataParking,
+        "Data Parking"
+      );  
+    } catch (error) {
+      console.error("Error en Consulta de el services de People getDataParking:", error); // Registrar el error en la consola
+      throw error;
+    }
+  }
+  
 }

@@ -43,4 +43,18 @@ export class PeopleRepository {
       throw error;
     }
   }
+  async getDataParking (divitionCode: string , spanme: string, centerCode	: string): Promise<any> {
+    try {
+      const pool = await sql.connect(dbConfig);
+      const result = await pool
+        .request()
+        .input("divitionCode", sql.Char, divitionCode)
+        .input("centerCode", sql.Char, centerCode)
+        .execute(spanme);
+      return result.recordset;
+    } catch (error) {
+      console.error("Error en Consulta de el repository de People getDataParking:", error); // Registrar el error en la consola
+      throw error;
+    }
+  }
 }
