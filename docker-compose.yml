@@ -1,0 +1,18 @@
+services:
+  api-seguridad:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: apiappseguridad:latest
+    container_name: api-seguridad
+    restart: unless-stopped
+    ports:
+      - "6000:6000"
+    env_file:
+      - .env
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
