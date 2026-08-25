@@ -13,8 +13,8 @@ export class ValidateUserUseCase {
 
   async execute(credentials: Credentials) {
     const user = await this.authRepository.validateUser(credentials);
-
-    if (!user || user.codmsg !== 300) {
+  
+    if (!user || user.codmsg === 300) {
       throw new UnauthorizedError(user?.descmsg ?? "Credenciales inválidas");
     }
 
