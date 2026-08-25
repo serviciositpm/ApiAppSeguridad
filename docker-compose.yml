@@ -12,7 +12,12 @@ services:
       - .env
     networks:
       - backend
+      - crondocumentossri_default
 
 networks:
   backend:
     driver: bridge
+  # Red externa donde ya vive el contenedor cron-sri-mongo (Mongo).
+  # No se crea aquí, ya existe porque la levantó el otro docker-compose.
+  crondocumentossri_default:
+    external: true
