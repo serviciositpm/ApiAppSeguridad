@@ -18,17 +18,23 @@ export class PeopleController {
 
   getDataPeople = async (_req: Request, res: Response) => {
     const data = await this.getDataPeopleUseCase.execute("Sp_App_Seg_Personas");
-    res.status(CodesHttpEnum.ok).json(data);
+    res.status(CodesHttpEnum.ok).json(
+      HttpResponse.response(CodesHttpEnum.ok, data, "Data People")
+    );
   };
 
   getDataPeopleSecurity = async (_req: Request, res: Response) => {
     const data = await this.getDataPeopleSecurityUseCase.execute();
-    res.status(CodesHttpEnum.ok).json(data);
+    res.status(CodesHttpEnum.ok).json(
+      HttpResponse.response(CodesHttpEnum.ok, data, "Data People Security")
+    );
   };
 
   getDataEmployees = async (req: Request, res: Response) => {
     const data = await this.getDataEmployeesUseCase.execute(req.body);
-    res.status(CodesHttpEnum.ok).json(data);
+    res.status(CodesHttpEnum.ok).json(
+      HttpResponse.response(CodesHttpEnum.ok, data, "Data Employees")
+    );
   };
 
   getDataSupplier = async (req: Request, res: Response) => {
